@@ -20,7 +20,7 @@ const orderSchema = contactSchema.extend({
 
 type FormErrors = Record<string, string>;
 
-function FieldError({ message }: { message?: string }) {
+function FieldError({ message }: { message: string | undefined }) {
   return message ? <p className="mt-1 text-xs text-destructive">{message}</p> : null;
 }
 
@@ -44,12 +44,12 @@ export function ContactForm() {
 
   return (
     <form onSubmit={submit} noValidate className="space-y-6">
-      <Field name="name" label="Your name" error={errors.name} />
-      <Field name="email" label="Email address" type="email" error={errors.email} />
+      <Field name="name" label="Your name" error={errors["name"]} />
+      <Field name="email" label="Email address" type="email" error={errors["email"]} />
       <div>
         <Label htmlFor="message">Message</Label>
         <Textarea id="message" name="message" rows={7} maxLength={1500} className="mt-2 min-h-40 bg-pearl" placeholder="What would you like to share?" />
-        <FieldError message={errors.message} />
+        <FieldError message={errors["message"]} />
       </div>
       <Button type="submit" variant="gold" size="lg"><Send /> Send message</Button>
     </form>
@@ -76,18 +76,18 @@ export function OrderForm() {
 
   return (
     <form onSubmit={submit} noValidate className="grid gap-6 md:grid-cols-2">
-      <Field name="name" label="Full name" error={errors.name} />
-      <Field name="email" label="Email address" type="email" error={errors.email} />
+      <Field name="name" label="Full name" error={errors["name"]} />
+      <Field name="email" label="Email address" type="email" error={errors["email"]} />
       <div className="md:col-span-2">
         <Label htmlFor="address">Mailing address</Label>
         <Textarea id="address" name="address" rows={4} maxLength={300} className="mt-2 bg-pearl" placeholder="Street, city, state, postal code, country" />
-        <FieldError message={errors.address} />
+        <FieldError message={errors["address"]} />
       </div>
-      <Field name="quantity" label="Quantity" type="number" defaultValue="1" min="1" max="10" error={errors.quantity} />
+      <Field name="quantity" label="Quantity" type="number" defaultValue="1" min="1" max="10" error={errors["quantity"]} />
       <div className="md:col-span-2">
         <Label htmlFor="message">Note for Rich <span className="text-muted-foreground">(optional)</span></Label>
         <Textarea id="message" name="message" rows={5} maxLength={1500} className="mt-2 bg-pearl" placeholder="Gift inscription or delivery note" defaultValue="No additional message." />
-        <FieldError message={errors.message} />
+        <FieldError message={errors["message"]} />
       </div>
       <div className="md:col-span-2">
         <Button type="submit" variant="gold" size="lg"><Send /> Request your copy</Button>
@@ -96,7 +96,7 @@ export function OrderForm() {
   );
 }
 
-function Field({ name, label, error, ...props }: React.ComponentProps<typeof Input> & { name: string; label: string; error?: string }) {
+function Field({ name, label, error, ...props }: React.ComponentProps<typeof Input> & { name: string; label: string; error: string | undefined }) {
   return (
     <div>
       <Label htmlFor={name}>{label}</Label>
