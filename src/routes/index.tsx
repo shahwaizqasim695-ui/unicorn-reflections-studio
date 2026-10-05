@@ -146,6 +146,6 @@ function Index() {
       <blockquote className="mx-auto mt-7 max-w-4xl font-display text-3xl leading-snug text-navy md:text-5xl">“A collection alive to memory’s music, the natural world, and the enduring possibility of wonder.”</blockquote>
       <p className="mt-7 text-sm font-medium text-navy">Dr. Kathleen P. Decker</p>
       <p className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">Past President, The Poetry Society of Virginia</p>
--     </section>
+    </section>
   </>;
 }
