@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Feather, MessageCircle, Quote, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Feather, MessageCircle, Quote } from "lucide-react";
 
 import coverAsset from "@/assets/rich-higgins-full-cover.jpg.asset.json";
 import { Button } from "@/components/ui/button";
